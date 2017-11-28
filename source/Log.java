@@ -1,5 +1,4 @@
 import javax.swing.JFrame;
-import javax.swing.Timer;
 
 public class Log extends JFrame {
 
@@ -14,6 +13,8 @@ public class Log extends JFrame {
 	static int Hour;
 	static int Minute;
 	static String AMPM;
+	static Clock clock = new Clock();
+	static Thread time = new Thread(clock);
 	
 	public static int getHour() {
 		return Hour;

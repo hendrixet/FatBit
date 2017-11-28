@@ -80,7 +80,7 @@ public class SetTime extends Log{
 					StepLog.minute.setText("0"+Integer.toString(Log.Minute));
 				}
 				StepLog.ampm.setText(Log.AMPM);
-				UILayer.switchToStepScreen();
+				UILayer.switchFromSetTime();
 			}
 		});
 		confirm.setBounds(67, 340, 266, 40);

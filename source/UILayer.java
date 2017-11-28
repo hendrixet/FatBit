@@ -1,5 +1,5 @@
 import java.awt.EventQueue;
-
+import java.lang.Thread;
 public class UILayer{
 
 
@@ -14,10 +14,14 @@ public class UILayer{
 				}
 			});
 		}
+	public static void switchFromSetTime() {
+		Log.time.start();
+		Log.stepLogFrame.setVisible(true);
+		Log.setTimeFrame.setVisible(false);
+	}
 		
 	public static void switchToStepScreen() {
 		Log.stepLogFrame.setVisible(true);
-		Log.setTimeFrame.setVisible(false);
 		Log.calorieLogFrame.setVisible(false);
 	}
 	public static void switchToHeartScreen() {
