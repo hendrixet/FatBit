@@ -1,6 +1,6 @@
 
-public class StepCounter implements DataSource{
-	public int getData() {
+public class StepCounter{
+	static public int getData() {
 		return 1;
 	}
 }

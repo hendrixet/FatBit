@@ -15,10 +15,16 @@ import java.awt.event.MouseEvent;
 
 public class CalorieLog extends Log{
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private int calBurnedToday;
-	private int[] calBurnedThisMonth;
-	int dailyCalGoal;
+	static int calBurnedToday = 0;
+	static int[] calBurnedThisMonth;
+	static int dailyCalGoal=500;
+	static Label minute = new Label("00");
+	static Label hour = new Label("0");
+	static Label AMPM = new Label("AM/PM");
+	static Label calBurned = new Label("0000");
+	static JProgressBar progressBar = new JProgressBar();
 	/**
 	 * Launch the application.
 	 */
@@ -48,14 +54,14 @@ public class CalorieLog extends Log{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		dailyCalGoal=500;
 		
-		JProgressBar progressBar = new JProgressBar();
+		
+		
 		progressBar.setForeground(Color.GREEN);
 		progressBar.setBounds(122, 321, 271, 36);
 		contentPane.add(progressBar);
 		
-		Label goal = new Label("0000");
+		Label goal = new Label(Integer.toString(dailyCalGoal));
 		goal.setForeground(Color.WHITE);
 		goal.setBounds(44, 331, 72, 36);
 		contentPane.add(goal);
@@ -64,8 +70,7 @@ public class CalorieLog extends Log{
 		switchScreenButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				Log.stepLogFrame.setVisible(true);
-				Log.calorieLogFrame.setVisible(false);
+				UILayer.switchToStepScreen();
 			}
 		});
 		switchScreenButton.setForeground(Color.GREEN);
@@ -78,10 +83,10 @@ public class CalorieLog extends Log{
 		slash.setBounds(88, 302, 15, 36);
 		contentPane.add(slash);
 		
-		Label stepsTaken = new Label("0000");
-		stepsTaken.setForeground(Color.WHITE);
-		stepsTaken.setBounds(10, 292, 86, 53);
-		contentPane.add(stepsTaken);
+		
+		calBurned.setForeground(Color.WHITE);
+		calBurned.setBounds(10, 292, 86, 53);
+		contentPane.add(calBurned);
 		
 		Label Calories = new Label("Calories");
 		Calories.setFont(new Font("Dialog", Font.PLAIN, 54));
@@ -95,11 +100,11 @@ public class CalorieLog extends Log{
 		Burned.setBounds(159, 107, 186, 53);
 		contentPane.add(Burned);
 		
-		Label Hour = new Label("0");
-		Hour.setForeground(Color.GREEN);
-		Hour.setFont(new Font("Dialog", Font.PLAIN, 90));
-		Hour.setBounds(44, 166, 59, 78);
-		contentPane.add(Hour);
+		
+		hour.setForeground(Color.GREEN);
+		hour.setFont(new Font("Dialog", Font.PLAIN, 90));
+		hour.setBounds(44, 166, 59, 78);
+		contentPane.add(hour);
 		
 		Label label_4 = new Label(":");
 		label_4.setForeground(Color.GREEN);
@@ -107,13 +112,13 @@ public class CalorieLog extends Log{
 		label_4.setBounds(92, 150, 24, 96);
 		contentPane.add(label_4);
 		
-		Label minute = new Label("00");
+
 		minute.setForeground(Color.GREEN);
 		minute.setFont(new Font("Dialog", Font.PLAIN, 90));
 		minute.setBounds(122, 166, 103, 78);
 		contentPane.add(minute);
 		
-		Label AMPM = new Label("AM/PM");
+		
 		AMPM.setForeground(Color.GREEN);
 		AMPM.setBounds(228, 178, 114, 45);
 		contentPane.add(AMPM);

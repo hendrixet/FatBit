@@ -1,4 +1,3 @@
-import java.awt.EventQueue;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +10,7 @@ import java.awt.event.MouseEvent;
 
 public class SetTime extends Log{
 	private JPanel contentPane;
-	private final Button button = new Button("Confirm");
-
+	private final Button confirm = new Button("Confirm");
 	/**
 	 * Launch the application.
 	 */
@@ -41,20 +39,7 @@ public class SetTime extends Log{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("Welcome to FatBit:");
-		lblNewJgoodiesTitle.setFont(new Font("Eras Medium ITC", Font.PLAIN, 32));
-		lblNewJgoodiesTitle.setForeground(Color.WHITE);
-		lblNewJgoodiesTitle.setBounds(67, 33, 265, 37);
-		contentPane.add(lblNewJgoodiesTitle);
-		button.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				Log.stepLogFrame.setVisible(true);
-				Log.setTimeFrame.setVisible(false);
-			}
-		});
-		button.setBounds(67, 340, 266, 40);
-		contentPane.add(button);
+		
 		
 		JLabel lblNewJgoodiesTitle_1 = DefaultComponentFactory.getInstance().createTitle("Please Input time and press \r\nconfirm");
 		lblNewJgoodiesTitle_1.setFont(new Font("Eras Medium ITC", Font.PLAIN, 18));
@@ -62,28 +47,51 @@ public class SetTime extends Log{
 		lblNewJgoodiesTitle_1.setBounds(60, 68, 294, 30);
 		contentPane.add(lblNewJgoodiesTitle_1);
 		
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(83, 190, 68, 46);
-		contentPane.add(spinner);
+		JSpinner sethour = new JSpinner();
+		sethour.setModel(new SpinnerNumberModel(1, 1, 12, 1));
+		sethour.setBounds(83, 190, 68, 46);
+		contentPane.add(sethour);
 		
-		JSpinner spinner_1 = new JSpinner();
-		spinner_1.setBounds(164, 190, 40, 46);
-		contentPane.add(spinner_1);
+		JSpinner set_min1 = new JSpinner();
+		set_min1.setModel(new SpinnerNumberModel(0, 0, 5, 1));
+		set_min1.setBounds(164, 190, 40, 46);
+		contentPane.add(set_min1);
 		
-		JSpinner spinner_2 = new JSpinner();
-		spinner_2.setBounds(212, 190, 40, 46);
-		contentPane.add(spinner_2);
+		JSpinner set_min2 = new JSpinner();
+		set_min2.setModel(new SpinnerNumberModel(0, 0, 9, 1));
+		set_min2.setBounds(212, 190, 40, 46);
+		contentPane.add(set_min2);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel(":");
 		lblNewJgoodiesLabel.setForeground(Color.WHITE);
 		lblNewJgoodiesLabel.setBounds(154, 193, 16, 39);
 		contentPane.add(lblNewJgoodiesLabel);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setToolTipText("AM/PM");
-		comboBox.setForeground(Color.BLACK);
-		comboBox.setMaximumRowCount(3);
-		comboBox.setBounds(272, 190, 113, 45);
-		contentPane.add(comboBox);
+		String[] AP= {"AM", "PM"};
+		JComboBox AMPM = new JComboBox(AP);
+		AMPM.setToolTipText("AM/PM");
+		AMPM.setForeground(Color.BLACK);
+		AMPM.setMaximumRowCount(2);
+		AMPM.setBounds(272, 190, 113, 45);
+		contentPane.add(AMPM);
+		
+		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("Welcome to FatBit:");
+		lblNewJgoodiesTitle.setFont(new Font("Eras Medium ITC", Font.PLAIN, 32));
+		lblNewJgoodiesTitle.setForeground(Color.WHITE);
+		lblNewJgoodiesTitle.setBounds(67, 33, 265, 37);
+		contentPane.add(lblNewJgoodiesTitle);
+		confirm.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Log.setHour((Integer)sethour.getValue());
+				String currentMinute =  Integer.toString((Integer)set_min1.getValue()) + Integer.toString((Integer)set_min2.getValue()); 
+				Log.setMinute(Integer.parseInt(currentMinute));
+				StepLog.hour.setText(Integer.toString(Log.Hour));
+				StepLog.minute.setText(Integer.toString(Log.Minute));
+				UILayer.switchToStepScreen();
+			}
+		});
+		confirm.setBounds(67, 340, 266, 40);
+		contentPane.add(confirm);
 	}
 }
