@@ -26,7 +26,7 @@ public class HeartRateLog extends Log{
 	static int[] dailyHeartRateAverage;
 	static Label minute = new Label("00");
 	static Label hour = new Label("0");
-	static Label AMPM = new Label("AM/PM");
+	static Label ampm = new Label("AM/PM");
 	/**
 	 * Launch the application.
 	 */
@@ -75,6 +75,7 @@ public class HeartRateLog extends Log{
 				else {
 					CalorieLog.progressBar.setValue(100);
 				}
+				CalorieLog.ampm.setText(Log.AMPM);
 				UILayer.switchToCalorieScreen();
 			}
 		});
@@ -121,10 +122,11 @@ public class HeartRateLog extends Log{
 		BPM.setForeground(Color.WHITE);
 		BPM.setBounds(199, 241, 151, 62);
 		contentPane.add(BPM);
+		ampm.setFont(new Font("Eras Medium ITC", Font.PLAIN, 32));
 		
-		AMPM.setForeground(Color.RED);
-		AMPM.setBounds(231, 151, 119, 45);
-		contentPane.add(AMPM);
+		ampm.setForeground(Color.RED);
+		ampm.setBounds(231, 151, 119, 45);
+		contentPane.add(ampm);
 		
 		Button button = new Button("Get Heartrate");
 		button.addMouseListener(new MouseAdapter() {

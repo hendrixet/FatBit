@@ -24,7 +24,7 @@ public class StepLog extends Log{
 	int dailyStepGoal;
 	static Label minute = new Label("00");
 	static Label hour = new Label("0");
-	static Label AMPM = new Label("AM/PM");
+	static Label ampm = new Label("AM/PM");
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -70,6 +70,7 @@ public class StepLog extends Log{
 				else {
 					HeartRateLog.minute.setText("0"+Integer.toString(Log.Minute));
 				}
+				HeartRateLog.ampm.setText(Log.AMPM);
 				UILayer.switchToHeartScreen();
 			}
 		});
@@ -117,9 +118,10 @@ public class StepLog extends Log{
 		minute.setFont(new Font("Dialog", Font.PLAIN, 90));
 		minute.setBounds(122, 98, 103, 78);
 		contentPane.add(minute);
+		ampm.setFont(new Font("Eras Medium ITC", Font.PLAIN, 32));
 		
-		AMPM.setBounds(231, 116, 114, 45);
-		contentPane.add(AMPM);
+		ampm.setBounds(231, 116, 114, 45);
+		contentPane.add(ampm);
 		
 		Button TakeStep = new Button("Take Step");
 		TakeStep.addMouseListener(new MouseAdapter() {

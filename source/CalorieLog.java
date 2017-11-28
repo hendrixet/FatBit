@@ -22,7 +22,7 @@ public class CalorieLog extends Log{
 	static int dailyCalGoal=500;
 	static Label minute = new Label("00");
 	static Label hour = new Label("0");
-	static Label AMPM = new Label("AM/PM");
+	static Label ampm = new Label("AM/PM");
 	static Label calBurned = new Label("0000");
 	static JProgressBar progressBar = new JProgressBar();
 	/**
@@ -62,6 +62,7 @@ public class CalorieLog extends Log{
 		contentPane.add(progressBar);
 		
 		Label goal = new Label(Integer.toString(dailyCalGoal));
+		goal.setFont(new Font("Dialog", Font.PLAIN, 29));
 		goal.setForeground(Color.WHITE);
 		goal.setBounds(44, 331, 72, 36);
 		contentPane.add(goal);
@@ -77,6 +78,7 @@ public class CalorieLog extends Log{
 				else {
 					StepLog.minute.setText("0"+Integer.toString(Log.Minute));
 				}
+				StepLog.ampm.setText(Log.AMPM);
 				UILayer.switchToStepScreen();
 			}
 		});
@@ -86,13 +88,15 @@ public class CalorieLog extends Log{
 		contentPane.add(switchScreenButton);
 		
 		Label slash = new Label("/");
+		slash.setFont(new Font("Dialog", Font.PLAIN, 29));
 		slash.setForeground(Color.WHITE);
-		slash.setBounds(88, 302, 15, 36);
+		slash.setBounds(81, 297, 15, 48);
 		contentPane.add(slash);
+		calBurned.setFont(new Font("Dialog", Font.PLAIN, 29));
 		
 		
 		calBurned.setForeground(Color.WHITE);
-		calBurned.setBounds(10, 292, 86, 53);
+		calBurned.setBounds(10, 297, 72, 45);
 		contentPane.add(calBurned);
 		
 		Label Calories = new Label("Calories");
@@ -124,11 +128,12 @@ public class CalorieLog extends Log{
 		minute.setFont(new Font("Dialog", Font.PLAIN, 90));
 		minute.setBounds(122, 166, 103, 78);
 		contentPane.add(minute);
+		ampm.setFont(new Font("Eras Medium ITC", Font.PLAIN, 32));
 		
 		
-		AMPM.setForeground(Color.GREEN);
-		AMPM.setBounds(228, 178, 114, 45);
-		contentPane.add(AMPM);
+		ampm.setForeground(Color.GREEN);
+		ampm.setBounds(228, 178, 114, 45);
+		contentPane.add(ampm);
 	}
 
 }
