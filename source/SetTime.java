@@ -2,13 +2,15 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SetTime extends Log{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final Button confirm = new Button("Confirm");
 	/**
@@ -68,7 +70,7 @@ public class SetTime extends Log{
 		contentPane.add(lblNewJgoodiesLabel);
 		
 		String[] AP= {"AM", "PM"};
-		JComboBox AMPM = new JComboBox(AP);
+		JComboBox<String> AMPM = new JComboBox<String>(AP);
 		AMPM.setToolTipText("AM/PM");
 		AMPM.setForeground(Color.BLACK);
 		AMPM.setMaximumRowCount(2);
@@ -87,7 +89,12 @@ public class SetTime extends Log{
 				String currentMinute =  Integer.toString((Integer)set_min1.getValue()) + Integer.toString((Integer)set_min2.getValue()); 
 				Log.setMinute(Integer.parseInt(currentMinute));
 				StepLog.hour.setText(Integer.toString(Log.Hour));
-				StepLog.minute.setText(Integer.toString(Log.Minute));
+				if(Log.Minute>9) {
+					StepLog.minute.setText(Integer.toString(Log.Minute));
+					}
+				else {
+					StepLog.minute.setText("0"+Integer.toString(Log.Minute));
+				}
 				UILayer.switchToStepScreen();
 			}
 		});

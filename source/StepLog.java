@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -8,7 +7,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JProgressBar;
 import java.awt.Label;
 import java.awt.Button;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -66,7 +64,12 @@ public class StepLog extends Log{
 			@Override
 			public void mousePressed(MouseEvent e) {
 				HeartRateLog.hour.setText(Integer.toString(Log.Hour));
-				HeartRateLog.minute.setText(Integer.toString(Log.Minute));
+				if(Log.Minute>9) {
+					HeartRateLog.minute.setText(Integer.toString(Log.Minute));
+					}
+				else {
+					HeartRateLog.minute.setText("0"+Integer.toString(Log.Minute));
+				}
 				UILayer.switchToHeartScreen();
 			}
 		});

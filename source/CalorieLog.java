@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -8,7 +8,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JProgressBar;
 import java.awt.Label;
 import java.awt.Button;
-import javax.swing.SwingConstants;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -70,6 +70,13 @@ public class CalorieLog extends Log{
 		switchScreenButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				StepLog.hour.setText(Integer.toString(Log.Hour));
+				if(Log.Minute>9) {
+					StepLog.minute.setText(Integer.toString(Log.Minute));
+					}
+				else {
+					StepLog.minute.setText("0"+Integer.toString(Log.Minute));
+				}
 				UILayer.switchToStepScreen();
 			}
 		});

@@ -1,14 +1,14 @@
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JProgressBar;
+
 import java.awt.Label;
 import java.awt.Button;
-import javax.swing.SwingConstants;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -16,10 +16,14 @@ import java.util.ArrayList;
 
 public class HeartRateLog extends Log{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	int currentHeartRate;
-	public ArrayList<Integer> heartRateHistoryToday = new ArrayList<Integer>();
-	int[] dailyHeartRateAverage;
+	static int currentHeartRate;
+	static public ArrayList<Integer> heartRateHistoryToday = new ArrayList<Integer>();
+	static int[] dailyHeartRateAverage;
 	static Label minute = new Label("00");
 	static Label hour = new Label("0");
 	static Label AMPM = new Label("AM/PM");
@@ -58,9 +62,19 @@ public class HeartRateLog extends Log{
 			@Override
 			public void mousePressed(MouseEvent e) {
 				CalorieLog.hour.setText(Integer.toString(Log.Hour));
-				CalorieLog.minute.setText(Integer.toString(Log.Minute));
-				CalorieLog.calBurned.setText(Integer.toString(CalorieLog.calBurnedToday));
-				CalorieLog.progressBar.setValue(CalorieLog.calBurnedToday/CalorieLog.dailyCalGoal);
+				if(Log.Minute>9) {
+					CalorieLog.minute.setText(Integer.toString(Log.Minute));
+					}
+				else {
+					CalorieLog.minute.setText("0"+Integer.toString(Log.Minute));
+				}
+				CalorieLog.calBurned.setText(Integer.toString(((CalorieLog.calBurnedToday)/(CalorieLog.dailyCalGoal))));
+				if((((CalorieLog.calBurnedToday)/(CalorieLog.dailyCalGoal)))/5<100) {
+					CalorieLog.progressBar.setValue((((CalorieLog.calBurnedToday)/(CalorieLog.dailyCalGoal)))/5);
+				}
+				else {
+					CalorieLog.progressBar.setValue(100);
+				}
 				UILayer.switchToCalorieScreen();
 			}
 		});
@@ -118,12 +132,8 @@ public class HeartRateLog extends Log{
 			public void mousePressed(MouseEvent e) {
 			currentHeartRate=HeartrateMoniter.getData();	
 			heartRate.setText(Integer.toString(currentHeartRate));
-			heartRateHistoryToday.add(0, currentHeartRate);
-			int totalHeartRate=0;
-			for(int i=0; i<heartRateHistoryToday.size(); i+=1) {
-				totalHeartRate+=heartRateHistoryToday.get(i);
-			}
-			CalorieLog.calBurnedToday =(int) (((20.0*0.2017)-(181.0*0.05741)+(totalHeartRate*0.6309)-55.0969)*(heartRateHistoryToday.size()*(5.0/4.184)));
+			heartRateHistoryToday.add(currentHeartRate);
+			CalorieLog.calBurnedToday = CalorieCounter.getData();
 			}
 		});
 		button.setForeground(Color.RED);
