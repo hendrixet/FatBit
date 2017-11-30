@@ -55,6 +55,27 @@ public class StepLog extends Log{
 		stepsToday=0;
 		dailyStepGoal=500;
 		
+		Label dash = new Label("/");
+		dash.setForeground(Color.WHITE);
+		dash.setBounds(88, 217, 15, 36);
+		contentPane.add(dash);
+		hour.setAlignment(Label.RIGHT);
+		
+		hour.setFont(new Font("Dialog", Font.PLAIN, 90));
+		hour.setBounds(10, 98, 97, 78);
+		contentPane.add(hour);
+		
+		Label Steps = new Label("Steps");
+		Steps.setFont(new Font("Dialog", Font.PLAIN, 54));
+		Steps.setForeground(Color.BLUE);
+		Steps.setBounds(10, 39, 140, 53);
+		contentPane.add(Steps);
+		
+		Label label_4 = new Label(":");
+		label_4.setFont(new Font("Dialog", Font.PLAIN, 90));
+		label_4.setBounds(98, 80, 24, 96);
+		contentPane.add(label_4);
+		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setBounds(122, 233, 271, 36);
 		contentPane.add(progressBar);
@@ -78,15 +99,11 @@ public class StepLog extends Log{
 		switchScreenButton.setBounds(351, 39, 42, 137);
 		contentPane.add(switchScreenButton);
 		
-		Label dash = new Label("/");
-		dash.setForeground(Color.WHITE);
-		dash.setBounds(88, 217, 15, 36);
-		contentPane.add(dash);
-		
 		Label stepsTaken = new Label("0000");
+		stepsTaken.setAlignment(Label.RIGHT);
 		stepsTaken.setFont(new Font("Dialog", Font.PLAIN, 29));
 		stepsTaken.setForeground(Color.WHITE);
-		stepsTaken.setBounds(20, 217, 72, 36);
+		stepsTaken.setBounds(10, 217, 72, 36);
 		contentPane.add(stepsTaken);
 		
 		Label goal = new Label(Integer.toString(dailyStepGoal));
@@ -95,25 +112,10 @@ public class StepLog extends Log{
 		goal.setBounds(44, 247, 72, 36);
 		contentPane.add(goal);
 		
-		Label label = new Label("Steps");
-		label.setFont(new Font("Dialog", Font.PLAIN, 54));
-		label.setForeground(Color.BLUE);
-		label.setBounds(10, 39, 140, 53);
-		contentPane.add(label);
-		
 		Label Taken = new Label("Taken");
 		Taken.setFont(new Font("Dialog", Font.PLAIN, 54));
 		Taken.setBounds(156, 39, 186, 53);
 		contentPane.add(Taken);
-		
-		hour.setFont(new Font("Dialog", Font.PLAIN, 90));
-		hour.setBounds(44, 98, 59, 78);
-		contentPane.add(hour);
-		
-		Label label_4 = new Label(":");
-		label_4.setFont(new Font("Dialog", Font.PLAIN, 90));
-		label_4.setBounds(98, 80, 24, 96);
-		contentPane.add(label_4);
 		
 		minute.setFont(new Font("Dialog", Font.PLAIN, 90));
 		minute.setBounds(122, 98, 103, 78);

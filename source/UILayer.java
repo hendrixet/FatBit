@@ -1,5 +1,5 @@
 import java.awt.EventQueue;
-import java.lang.Thread;
+
 public class UILayer{
 
 

@@ -79,6 +79,12 @@ public class HeartRateLog extends Log{
 				UILayer.switchToCalorieScreen();
 			}
 		});
+		hour.setAlignment(Label.RIGHT);
+		
+		hour.setForeground(Color.RED);
+		hour.setFont(new Font("Dialog", Font.PLAIN, 90));
+		hour.setBounds(10, 133, 92, 78);
+		contentPane.add(hour);
 		switchScreenButton.setBackground(Color.RED);
 		switchScreenButton.setBounds(351, 39, 42, 137);
 		contentPane.add(switchScreenButton);
@@ -100,11 +106,6 @@ public class HeartRateLog extends Log{
 		Heartrate_Label.setFont(new Font("Dialog", Font.PLAIN, 54));
 		Heartrate_Label.setBounds(93, 83, 239, 53);
 		contentPane.add(Heartrate_Label);
-		
-		hour.setForeground(Color.RED);
-		hour.setFont(new Font("Dialog", Font.PLAIN, 90));
-		hour.setBounds(44, 133, 59, 78);
-		contentPane.add(hour);
 		
 		Label label_4 = new Label(":");
 		label_4.setForeground(Color.RED);
