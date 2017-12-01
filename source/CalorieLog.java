@@ -54,6 +54,13 @@ public class CalorieLog extends Log{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		hour.setAlignment(Label.RIGHT);
+		
+		
+		hour.setForeground(Color.GREEN);
+		hour.setFont(new Font("Dialog", Font.PLAIN, 90));
+		hour.setBounds(10, 166, 95, 78);
+		contentPane.add(hour);
 		
 		
 		
@@ -92,6 +99,7 @@ public class CalorieLog extends Log{
 		slash.setForeground(Color.WHITE);
 		slash.setBounds(81, 297, 15, 48);
 		contentPane.add(slash);
+		calBurned.setAlignment(Label.RIGHT);
 		calBurned.setFont(new Font("Dialog", Font.PLAIN, 29));
 		
 		
@@ -111,16 +119,10 @@ public class CalorieLog extends Log{
 		Burned.setBounds(159, 107, 186, 53);
 		contentPane.add(Burned);
 		
-		
-		hour.setForeground(Color.GREEN);
-		hour.setFont(new Font("Dialog", Font.PLAIN, 90));
-		hour.setBounds(44, 166, 59, 78);
-		contentPane.add(hour);
-		
 		Label label_4 = new Label(":");
 		label_4.setForeground(Color.GREEN);
 		label_4.setFont(new Font("Dialog", Font.PLAIN, 90));
-		label_4.setBounds(92, 150, 24, 96);
+		label_4.setBounds(101, 150, 27, 96);
 		contentPane.add(label_4);
 		
 
