@@ -6,7 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Frame;
 
 
-class StepLogTest {
+class HeartRateLogTest {
     StepLog frame;
 
     @Before
@@ -29,7 +29,7 @@ class StepLogTest {
 	}
 
     public static void main(String[] args) throws Exception {
-        StepLogTest t = new StepLogTest();
+        HeartRateLogTest t = new HeartRateLogTest();
         t.setUp();
         t.testView();
     }
